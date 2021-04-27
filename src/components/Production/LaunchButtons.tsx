@@ -1,9 +1,7 @@
-import { GetStaticProps } from 'next';
 import { useContext } from 'react';
+import { AiOutlineBarcode, AiOutlineTool, AiOutlineUndo } from 'react-icons/ai';
 import { LaunchContext } from '../../context/Production/LaunchContext';
 import styles from '../../styles/Components/Production/ButtonsLaunch.module.scss';
-
-import { AiOutlineBarcode, AiOutlineUndo, AiOutlineTool } from 'react-icons/ai';
 
 export default function LaunchButtons() {
   const {

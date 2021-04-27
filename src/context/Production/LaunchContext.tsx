@@ -1,4 +1,3 @@
-import { GetStaticProps } from 'next';
 import { createContext, ReactNode, useState } from 'react';
 import { DefectModal } from '../../components/Production/DefectModal';
 import { LaunchModal } from '../../components/Production/LaunchModal';

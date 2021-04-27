@@ -1,10 +1,7 @@
 import { GetStaticProps } from 'next';
 import { useContext, useEffect } from 'react';
 import LaunchButtons from '../../components/Production/LaunchButtons';
-import {
-  LaunchContext,
-  LaunchContextProvider,
-} from '../../context/Production/LaunchContext';
+import { LaunchContext } from '../../context/Production/LaunchContext';
 import { api } from '../../services/api';
 
 interface IEmployee {
@@ -29,10 +26,9 @@ export default function Launch({ employees }: IEmployeeRequest) {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const TWENTY_FOUR_HOURS = 2;
+  const TWENTY_FOUR_HOURS = 60 * 60 * 24;
   const { data } = await api.get('employees');
-  console.log(data);
-  
+
   const { employees }: IEmployeeRequest = data;
 
   return {

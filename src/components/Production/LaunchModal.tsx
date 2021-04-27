@@ -56,7 +56,6 @@ export function LaunchModal() {
         title: 'Sucesso!',
       });
     } catch (error) {
-      console.log(typeof error);
       if (error.response === undefined) {
         Notification({
           type: 'error',
