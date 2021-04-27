@@ -47,7 +47,7 @@ export function LaunchModal() {
       }
 
       if (saveEmployeeIdAfterSave) {
-        setEmployeeId(null);
+        setEmployeeId(0);
       }
 
       Notification({
