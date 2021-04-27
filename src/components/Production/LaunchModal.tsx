@@ -113,17 +113,8 @@ export function LaunchModal() {
                   onChange={(e) => {
                     setEmployeeId(e);
                   }}
-                  filterOption={(input, option) =>
-                    option.children
-                      .toLowerCase()
-                      .indexOf(input.toLowerCase()) >= 0
-                  }
+
                   // eslint-disable-next-line max-len
-                  filterSort={(optionA, optionB) =>
-                    optionA.children
-                      .toLowerCase()
-                      .localeCompare(optionB.children.toLowerCase())
-                  }
                 >
                   <Option key={0} value={0}>
                     não selecionado
