@@ -7,6 +7,12 @@ interface LaunchContextProviderProps {
   children: ReactNode;
 }
 
+interface IProduction {
+  percent: number;
+  total: string;
+  production_line_name: string;
+}
+
 interface ILaunchContext {
   launchModalToggle: (saveEmployee: boolean) => void;
   setEmployees: (employees: IEmployee[]) => void;
@@ -16,6 +22,8 @@ interface ILaunchContext {
   setLaunched: (param: number) => void;
   defectModalToggle: () => void;
   reversalModalToggle: () => void;
+  setProduction: (production: IProduction[]) => void;
+  production: IProduction[];
 }
 
 interface IEmployee {
@@ -33,6 +41,8 @@ export function LaunchContextProvider({
   const [isReversalModalOpen, setIsReversalModalOpen] = useState(false);
   const [employees, setEmployees] = useState([{} as IEmployee]);
   const [saveEmployeeIdAfterSave, setSaveEmployeeIdAfterSave] = useState(false);
+
+  const [production, setProduction] = useState([{} as IProduction]);
 
   const [launched, setLaunched] = useState(0);
 
@@ -60,6 +70,8 @@ export function LaunchContextProvider({
         setLaunched,
         defectModalToggle,
         reversalModalToggle,
+        setProduction,
+        production,
       }}
     >
       {children}

@@ -113,7 +113,15 @@ export function LaunchModal() {
                   onChange={(e) => {
                     setEmployeeId(e);
                   }}
-
+                  filterOption={(input, option) =>
+                    option.props.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0 ||
+                    option.props.value
+                      .toString()
+                      .toLowerCase()
+                      .includes(input.toLowerCase())
+                  }
                   // eslint-disable-next-line max-len
                 >
                   <Option key={0} value={0}>
