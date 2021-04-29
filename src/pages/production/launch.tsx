@@ -43,6 +43,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const response = await api.get('production');
 
   const { production } = response.data;
+  console.log('aaaaaaaaaaaaaa');
 
   return {
     props: { employees, production },
