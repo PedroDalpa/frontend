@@ -1,13 +1,24 @@
 import ReactEcharts from 'echarts-for-react';
 import { GetStaticProps } from 'next';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LaunchContext } from '../../context/Production/LaunchContext';
 import { api } from '../../services/api';
 import styles from '../../styles/Components/Production/LaunchProductionChart.module.scss';
-export default function VelocimeterChart() {
-  const { production } = useContext(LaunchContext);
-  console.log(production);
 
+interface IProduction {
+  production_line_name: string;
+  total: string;
+  percent: string;
+}
+export default function VelocimeterChart() {
+  const [production, setProduction] = useState([{} as IProduction]);
+  useEffect(() => {
+    api.get('production').then((response) => {
+      console.log(response);
+
+      setProduction(response.data.production);
+    });
+  }, []);
   const productions = production.map((productionPerLine) => {
     return {
       series: [

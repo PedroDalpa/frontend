@@ -12,14 +12,12 @@ interface IEmployee {
 
 interface ILaunchProps {
   employees: IEmployee[];
-  production: any;
 }
 
-export default function Launch({ employees, production }: ILaunchProps) {
+export default function Launch({ employees }: ILaunchProps) {
   const { setEmployees, setProduction } = useContext(LaunchContext);
   useEffect(() => {
     setEmployees(employees);
-    setProduction(production);
   }, [employees]);
   return (
     <>
@@ -34,19 +32,14 @@ export default function Launch({ employees, production }: ILaunchProps) {
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const THIRTY_SECONDS = 30;
+  const THIRTY_SECONDS = 60 * 60 * 4;
 
   const { data } = await api.get('employees');
 
   const { employees }: ILaunchProps = data;
 
-  const response = await api.get('production');
-
-  const { production } = response.data;
-  console.log('aaaaaaaaaaaaaa');
-
   return {
-    props: { employees, production },
+    props: { employees },
     revalidate: THIRTY_SECONDS,
   };
 };
